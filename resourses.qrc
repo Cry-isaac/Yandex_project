@@ -1,0 +1,15 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>icons/calendar_clock.png</file>
+    <file>icons/menu.png</file>
+    <file>icons/check_box.png</file>
+    <file>icons/close.png</file>
+    <file>icons/remove.png</file>
+    <file>icons/settings.jpg</file>
+    <file>icons/Arrow_back.jpg</file>
+    <file>icons/home.jpg</file>
+    <file>icons/plate.jpg</file>
+    <file>icons/products.jpg</file>
+    <file>icons/settings.svg</file>
+  </qresource>
+</RCC>
