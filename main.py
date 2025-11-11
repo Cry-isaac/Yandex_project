@@ -130,6 +130,7 @@ class MainWindow(QMainWindow):
     def new_product(self):
         print("new_product")
 
+    # 
     def exception_hook(exctype, value, tb):
         print("Произошла ошибка:")
         traceback.print_exception(exctype, value, tb)
