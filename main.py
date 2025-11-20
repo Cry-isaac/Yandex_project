@@ -1,10 +1,11 @@
 import sys
 import traceback
 
-
-from PyQt6 import uic, QtWidgets  # Импортируем uic
-from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QStackedWidget, QWidget, QCheckBox, QVBoxLayout
-from PyQt6.QtCore import QDate, QSettings  # Текущая дата
+from PyQt6 import uic, QtWidgets, QtSql  # Импортируем uic
+from PyQt6.QtSql import QSqlDatabase, QSqlTableModel, QSqlQuery
+from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QStackedWidget, QWidget, QCheckBox, QVBoxLayout, \
+    QTableView
+from PyQt6.QtCore import QDate, QSettings, Qt  # Текущая дата
 
 # Список Ui виджетов
 shadow_elements = {
@@ -26,8 +27,8 @@ class MainWindow(QMainWindow):
         self.today_calories = 0
         self.full_screen = False
 
-        # Минимальный и максимальный размер окна
-        self.setMinimumSize(850, 450)
+        # Минимальный размер окна
+        self.setMinimumSize(850, 700)
 
         # Название окна
         self.setWindowTitle("Подсчет калорий")
@@ -77,7 +78,122 @@ class MainWindow(QMainWindow):
 
         # Страница добавления приёма пищи
         # Название продукта
-        self.add_breakfast.clicked.connect(self.new_breakfast)
+        self.add_breakfast.clicked.connect(
+            self.on_add_food_item)
+
+        # # Зададим тип базы данных
+        # db = QSqlDatabase.addDatabase('QSQLITE')
+        # # Укажем имя базы данных
+        # db.setDatabaseName('calorie_tracker.db')
+        # # И откроем подключение
+        # db.open()
+
+        # db1 = QSqlDatabase.addDatabase("QSQLITE", "connection1");
+        # db1.setDatabaseName("data1.db");
+        #
+        # # Создадим объект QSqlTableModel,
+        # # зададим таблицу, с которой он будет работать,
+        # #  и выберем все данные
+
+        # Подключаем бд
+        db1 = QSqlDatabase.addDatabase('QSQLITE', 'con1')
+        db1.setDatabaseName('calorie_tracker.db')
+        db1.commit()
+        db1.open()
+
+        # Создание модели
+        model = QSqlTableModel(self, db1)
+        model.setTable("food_items")
+        model.setEditStrategy(QSqlTableModel.EditStrategy.OnFieldChange)  # автоматическое сохранение при изменении
+
+        # Заголовки
+        model.setHeaderData(0, Qt.Orientation.Horizontal, "ID")
+        model.setHeaderData(1, Qt.Orientation.Horizontal, "Продукт")
+        model.setHeaderData(2, Qt.Orientation.Horizontal, "Категория")
+        model.setHeaderData(3, Qt.Orientation.Horizontal, "Калории (ккал)")
+        model.setHeaderData(4, Qt.Orientation.Horizontal, "Протеин")
+        model.setHeaderData(5, Qt.Orientation.Horizontal, "Жиры")
+        model.setHeaderData(6, Qt.Orientation.Horizontal, "Углеводы")
+        model.setHeaderData(7, Qt.Orientation.Horizontal, "Белок")
+        model.setHeaderData(8, Qt.Orientation.Horizontal, "Размер порции")
+        model.setHeaderData(9, Qt.Orientation.Horizontal, "Избранное")
+
+        # Отображение в таблице
+        self.table_products.setModel(model)
+
+        # Загружаем данные из БД
+        if not model.select():
+            print("Ошибка загрузки данных:", model.lastError().text())
+        else:
+            print(f"Загружено {model.rowCount()} строк.")
+
+    # Проверка перед добавлением продукта
+    def on_add_food_item(self):
+        # Получаем данные из полей ввода
+        name = self.name_product.text()
+        category = self.category_product.text()
+        calories_text = self.count_calories.text()
+        protein = self.protein_product.text()
+        fat = self.fat_product.text()
+        carbs = self.carbs_product.text()
+        fiber = self.fiber_product.text()
+        serving_size = self.veight_product.text()
+
+        # Проверяем, что поля заполнены
+        if not name or not category or not calories_text or not protein or not fat or not carbs or not fiber:
+            print("Заполните все поля!")
+            return
+
+        try:
+            calories = float(calories_text)
+        except ValueError:
+            print("Калории должны быть числом!")
+            return
+
+        # Вызываем функцию добавления в БД
+        self.add_food_item(name, category, calories, protein, fat, carbs, fiber, serving_size)
+
+    # Добавление новой еды
+    def add_food_item(self, name, category, calories, protein, fat, carbs, fiber=0, serving_size=None):
+        """Добавляет продукт в data1.db."""
+        query = QSqlQuery(QSqlDatabase.database("db1"))
+        query.prepare("""",
+            INSERT INTO food_items
+            (name, category, calories, protein, fat, carbs, fiber, serving_size)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """)
+        query.addBindValue(name)
+        query.addBindValue(category)
+        query.addBindValue(calories)
+        query.addBindValue(protein)
+        query.addBindValue(fat)
+        query.addBindValue(carbs)
+        query.addBindValue(fiber)
+        query.addBindValue(serving_size)
+
+        if query.exec():
+            print(f"Продукт '{name}' добавлен.")
+        else:
+            print(f"Ошибка добавления продукта: {query.lastError().text()}")
+
+    # Добавление нового приема пищи
+    def add_meal(meal_type, notes=None):
+        """Добавляет приём пищи в data2.db."""
+        query = QSqlQuery(QSqlDatabase.database("db1"))
+        query.prepare("""",
+            INSERT INTO meals (meal_type, notes)
+            VALUES (?, ?)
+        """)
+        query.addBindValue(meal_type)
+        query.addBindValue(notes)
+
+        if query.exec():
+            meal_id = query.lastInsertId()
+            print(f"Приём пищи ({meal_type}) добавлен. ID: {meal_id}")
+            return meal_id
+        else:
+            print(f"Ошибка добавления приёма пищи: {query.lastError().text()}")
+            return None
 
     # Настройки
     def to_settings(self):
@@ -136,8 +252,6 @@ class MainWindow(QMainWindow):
         traceback.print_exception(exctype, value, tb)
 
 
-
-
 # Класс настроек
 class SettingsWindow(QWidget):
     def __init__(self):
@@ -160,6 +274,7 @@ class SettingsWindow(QWidget):
     def save_settings(self):
         self.settings.setValue("option_enabled", self.checkbox.isChecked())
         self.close()
+
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)

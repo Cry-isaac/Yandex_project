@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>773</width>
-    <height>544</height>
+       <height>759</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -387,7 +387,7 @@
           <item>
            <widget class="QStackedWidget" name="main_stackedWidget">
             <property name="currentIndex">
-             <number>0</number>
+                <number>2</number>
             </property>
             <widget class="QWidget" name="page_today">
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -682,6 +682,19 @@
                    </property>
                   </widget>
                  </item>
+                    <item>
+                        <widget class="QCheckBox" name="checkBox">
+                            <property name="maximumSize">
+                                <size>
+                                    <width>100</width>
+                                    <height>16777215</height>
+                                </size>
+                            </property>
+                            <property name="text">
+                                <string>Избранное</string>
+                            </property>
+                        </widget>
+                    </item>
                 </layout>
                </widget>
               </item>
@@ -697,59 +710,105 @@
                  <enum>QFrame::NoFrame</enum>
                 </property>
                 <layout class="QGridLayout" name="gridLayout_3">
-                 <item row="0" column="0">
-                  <widget class="QFrame" name="frame_4">
+                    <item row="3" column="0">
+                        <widget class="QFrame" name="frame_10">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_14">
+                            <layout class="QHBoxLayout" name="horizontalLayout_19">
                     <item>
-                     <widget class="QLabel" name="label_4">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
-                      </property>
+                        <widget class="QLabel" name="label_12">
+                            <property name="text">
+                                <string>Белок:</string>
+                            </property>
+                        </widget>
+                    </item>
+                                <item>
+                                    <widget class="QLineEdit" name="fiber_product"/>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+                    <item row="6" column="0">
+                        <widget class="QFrame" name="frame_14">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_22">
+                                <item>
+                                    <widget class="QLabel" name="label_15">
                       <property name="text">
-                       <string>Название:</string>
+                          <string>Протеин:</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QTextEdit" name="name_product">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
+                        <widget class="QLineEdit" name="protein_product"/>
+                    </item>
+                            </layout>
+                        </widget>
+                    </item>
+                    <item row="5" column="0">
+                        <widget class="QFrame" name="frame_13">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_21">
+                                <item>
+                                    <widget class="QLabel" name="label_14">
+                                        <property name="text">
+                                            <string>Углеводы:</string>
                       </property>
                      </widget>
+                                </item>
+                                <item>
+                                    <widget class="QLineEdit" name="carbs_product"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
-                 <item row="3" column="0">
-                  <widget class="QPushButton" name="add_breakfast">
-                   <property name="text">
-                    <string>Добавить</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item row="1" column="0">
-                  <widget class="QFrame" name="frame_5">
+                    <item row="4" column="0">
+                        <widget class="QFrame" name="frame_12">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_20">
+                                <item>
+                                    <widget class="QLabel" name="label_13">
+                                        <property name="text">
+                                            <string>Жиры:</string>
+                                        </property>
+                                    </widget>
+                                </item>
+                                <item>
+                                    <widget class="QLineEdit" name="fat_product"/>
+                                </item>
+                            </layout>
+                        </widget>
+                    </item>
+                    <item row="7" column="0">
+                        <widget class="QFrame" name="frame_6">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_15">
+                            <layout class="QHBoxLayout" name="horizontalLayout_16">
                     <item>
-                     <widget class="QLabel" name="label_5">
+                        <widget class="QLabel" name="label_6">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -757,34 +816,55 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string>Кол-во калорий на 100г:</string>
+                          <string>Вес съединого:</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QTextEdit" name="count_colories_on_100">
+                        <widget class="QLineEdit" name="veight_product"/>
+                    </item>
+                            </layout>
+                        </widget>
+                    </item>
+                    <item row="0" column="0">
+                        <widget class="QFrame" name="frame_4">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_14">
+                                <item>
+                                    <widget class="QLabel" name="label_4">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
                         <height>40</height>
                        </size>
                       </property>
+                                        <property name="text">
+                                            <string>Название:</string>
+                      </property>
                      </widget>
+                                </item>
+                                <item>
+                                    <widget class="QLineEdit" name="name_product"/>
                     </item>
                    </layout>
                   </widget>
                  </item>
                  <item row="2" column="0">
-                  <widget class="QFrame" name="frame_6">
+                     <widget class="QFrame" name="frame_5">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
                    <property name="frameShadow">
                     <enum>QFrame::Raised</enum>
                    </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_16">
+                         <layout class="QHBoxLayout" name="horizontalLayout_15">
                     <item>
-                     <widget class="QLabel" name="label_6">
+                        <widget class="QLabel" name="label_5">
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
@@ -792,19 +872,41 @@
                        </size>
                       </property>
                       <property name="text">
-                       <string>Вес съединого:</string>
+                          <string>Кол-во калорий на 100г:</string>
+                      </property>
+                        </widget>
+                    </item>
+                             <item>
+                                 <widget class="QLineEdit" name="count_calories"/>
+                             </item>
+                         </layout>
+                     </widget>
+                 </item>
+                    <item row="8" column="0">
+                        <widget class="QPushButton" name="add_breakfast">
+                            <property name="text">
+                                <string>Добавить</string>
+                            </property>
+                        </widget>
+                    </item>
+                    <item row="1" column="0">
+                        <widget class="QFrame" name="frame_15">
+                            <property name="frameShape">
+                                <enum>QFrame::StyledPanel</enum>
+                            </property>
+                            <property name="frameShadow">
+                                <enum>QFrame::Raised</enum>
+                            </property>
+                            <layout class="QHBoxLayout" name="horizontalLayout_23">
+                    <item>
+                        <widget class="QLabel" name="label_16">
+                            <property name="text">
+                                <string>Категория:</string>
                       </property>
                      </widget>
                     </item>
-                    <item>
-                     <widget class="QTextEdit" name="veight_product">
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                     </widget>
+                                <item>
+                                    <widget class="QLineEdit" name="category_product"/>
                     </item>
                    </layout>
                   </widget>
