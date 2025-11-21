@@ -29,6 +29,7 @@ class MainWindow(QMainWindow):
 
         # Минимальный размер окна
         self.setMinimumSize(850, 700)
+        self.setGeometry(300, 100, 850, 700)
 
         # Название окна
         self.setWindowTitle("Подсчет калорий")
@@ -155,7 +156,7 @@ class MainWindow(QMainWindow):
 
     # Добавление новой еды
     def add_food_item(self, name, category, calories, protein, fat, carbs, fiber=0, serving_size=None):
-        """Добавляет продукт в data1.db."""
+        """Добавляет продукт в food_items."""
         query = QSqlQuery(QSqlDatabase.database("db1"))
         query.prepare("""",
             INSERT INTO food_items
@@ -178,7 +179,7 @@ class MainWindow(QMainWindow):
 
     # Добавление нового приема пищи
     def add_meal(meal_type, notes=None):
-        """Добавляет приём пищи в data2.db."""
+        """Добавляет приём пищи в meals."""
         query = QSqlQuery(QSqlDatabase.database("db1"))
         query.prepare("""",
             INSERT INTO meals (meal_type, notes)
