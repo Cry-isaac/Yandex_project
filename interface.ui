@@ -151,11 +151,49 @@
              </size>
             </property>
             <property name="text">
-             <string>Добавить съеденное блюдо</string>
+                <string>Добавить новое блюдо</string>
             </property>
             <property name="icon">
              <iconset resource="resourses.qrc">
               <normaloff>:/icons/icons/plate.jpg</normaloff>:/icons/icons/plate.jpg</iconset>
+            </property>
+           </widget>
+          </item>
+             <item>
+                 <widget class="QPushButton" name="add_breakfast">
+                     <property name="sizePolicy">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                         </sizepolicy>
+                     </property>
+                     <property name="maximumSize">
+                         <size>
+                             <width>16777215</width>
+                             <height>40</height>
+                         </size>
+                     </property>
+                     <property name="text">
+                         <string>Добавить приём пищи</string>
+                     </property>
+                 </widget>
+             </item>
+             <item>
+                 <widget class="QPushButton" name="history">
+                     <property name="sizePolicy">
+                         <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                         </sizepolicy>
+                     </property>
+                     <property name="maximumSize">
+                         <size>
+                             <width>16777215</width>
+                             <height>40</height>
+                         </size>
+                     </property>
+                     <property name="text">
+                         <string>История</string>
             </property>
            </widget>
           </item>
@@ -242,42 +280,6 @@
           <enum>QFrame::NoFrame</enum>
          </property>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
-          <item>
-           <widget class="QFrame" name="frame_9">
-            <property name="frameShape">
-             <enum>QFrame::NoFrame</enum>
-            </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_4">
-             <item>
-              <widget class="QPushButton" name="menu_button">
-               <property name="maximumSize">
-                <size>
-                 <width>30</width>
-                 <height>30</height>
-                </size>
-               </property>
-               <property name="cursor">
-                <cursorShape>ArrowCursor</cursorShape>
-               </property>
-               <property name="text">
-                <string/>
-               </property>
-               <property name="icon">
-                <iconset resource="resourses.qrc">
-                 <normaloff>:/icons/icons/menu.png</normaloff>:/icons/icons/menu.png</iconset>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QLabel" name="menu_label">
-               <property name="text">
-                <string>Menu</string>
-               </property>
-              </widget>
-             </item>
-            </layout>
-           </widget>
-          </item>
           <item>
            <widget class="QFrame" name="frame_11">
             <property name="frameShape">
@@ -387,7 +389,7 @@
           <item>
            <widget class="QStackedWidget" name="main_stackedWidget">
             <property name="currentIndex">
-                <number>2</number>
+                <number>0</number>
             </property>
             <widget class="QWidget" name="page_today">
              <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -466,14 +468,7 @@
                         </widget>
                        </item>
                        <item>
-                        <widget class="QTextEdit" name="count_max_calories">
-                         <property name="maximumSize">
-                          <size>
-                           <width>90</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </widget>
+                           <widget class="QLineEdit" name="count_max_calories"/>
                        </item>
                        <item>
                         <widget class="QLabel" name="label_8">
@@ -522,25 +517,12 @@
                        <item alignment="Qt::AlignLeft">
                         <widget class="QLabel" name="label_11">
                          <property name="text">
-                          <string>Потреблено в блюдах:</string>
+                             <string>Калорий за сегодня:</string>
                          </property>
                         </widget>
                        </item>
-                       <item alignment="Qt::AlignLeft|Qt::AlignVCenter">
-                        <widget class="QTextBrowser" name="count_today_calories">
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>26</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>150</width>
-                           <height>40</height>
-                          </size>
-                         </property>
-                        </widget>
+                          <item>
+                              <widget class="QLineEdit" name="count_today_calories"/>
                        </item>
                       </layout>
                      </widget>
@@ -611,7 +593,7 @@
                     <item>
                      <widget class="QPushButton" name="add_food_2">
                       <property name="text">
-                       <string>Добавить съеденное блюдо</string>
+                          <string>Добавить приём пищи</string>
                       </property>
                      </widget>
                     </item>
@@ -662,6 +644,13 @@
                 </layout>
                </widget>
               </item>
+                 <item>
+                     <widget class="QPushButton" name="pushButton_ubdate_product">
+                         <property name="text">
+                             <string>Обновить</string>
+                         </property>
+                     </widget>
+                 </item>
              </layout>
             </widget>
             <widget class="QWidget" name="page_add_food">
@@ -678,7 +667,7 @@
                     <enum>Qt::LeftToRight</enum>
                    </property>
                    <property name="text">
-                    <string>Приём пищи</string>
+                       <string>Новое блюдо</string>
                    </property>
                   </widget>
                  </item>
@@ -883,7 +872,7 @@
                      </widget>
                  </item>
                     <item row="8" column="0">
-                        <widget class="QPushButton" name="add_breakfast">
+                        <widget class="QPushButton" name="button_add_food">
                             <property name="text">
                                 <string>Добавить</string>
                             </property>
@@ -912,6 +901,205 @@
                   </widget>
                  </item>
                 </layout>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+               <widget class="QWidget" name="page_add_breakfast">
+                   <layout class="QVBoxLayout" name="verticalLayout_12">
+                       <item>
+                           <widget class="QFrame" name="frame_18">
+                               <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_25">
+                                   <item>
+                                       <widget class="QLabel" name="label_18">
+                                           <property name="text">
+                                               <string>Приём пищи</string>
+                                           </property>
+                                       </widget>
+                                   </item>
+                               </layout>
+                           </widget>
+                       </item>
+                       <item>
+                           <widget class="QFrame" name="frame_19">
+                               <property name="sizePolicy">
+                                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                                       <horstretch>0</horstretch>
+                                       <verstretch>0</verstretch>
+                                   </sizepolicy>
+                               </property>
+                               <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QVBoxLayout" name="verticalLayout_13">
+                                   <item>
+                                       <widget class="QFrame" name="frame_23">
+                                           <property name="sizePolicy">
+                                               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                                   <horstretch>0</horstretch>
+                                                   <verstretch>0</verstretch>
+                                               </sizepolicy>
+                                           </property>
+                                           <property name="frameShape">
+                                               <enum>QFrame::StyledPanel</enum>
+                                           </property>
+                                           <property name="frameShadow">
+                                               <enum>QFrame::Raised</enum>
+                                           </property>
+                                           <layout class="QHBoxLayout" name="horizontalLayout_28">
+                                               <item>
+                                                   <widget class="QLabel" name="label_20">
+                                                       <property name="text">
+                                                           <string>Тип приёма пищи:</string>
+                                                       </property>
+                                                   </widget>
+                                               </item>
+                                               <item>
+                                                   <widget class="QComboBox" name="comboBox_type_meal">
+                                                       <property name="sizePolicy">
+                                                           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                                               <horstretch>0</horstretch>
+                                                               <verstretch>0</verstretch>
+                                                           </sizepolicy>
+                                                       </property>
+                                                       <item>
+                                                           <property name="text">
+                                                               <string>Завтрак</string>
+                                                           </property>
+                                                       </item>
+                                                       <item>
+                                                           <property name="text">
+                                                               <string>Обед</string>
+                                                           </property>
+                                                       </item>
+                                                       <item>
+                                                           <property name="text">
+                                                               <string>Ужин</string>
+                                                           </property>
+                                                       </item>
+                                                       <item>
+                                                           <property name="text">
+                                                               <string>Перекус</string>
+                                                           </property>
+                                                       </item>
+                                                   </widget>
+                                               </item>
+                                           </layout>
+                                       </widget>
+                                   </item>
+                                   <item>
+                                       <widget class="QFrame" name="frame_21">
+                                           <property name="frameShape">
+                                               <enum>QFrame::StyledPanel</enum>
+                                           </property>
+                                           <property name="frameShadow">
+                                               <enum>QFrame::Raised</enum>
+                                           </property>
+                                           <layout class="QHBoxLayout" name="horizontalLayout_26">
+                                               <item>
+                                                   <widget class="QLabel" name="label_19">
+                                                       <property name="text">
+                                                           <string>Итоговое кол-во калорий:</string>
+                                                       </property>
+                                                   </widget>
+                                               </item>
+                                               <item>
+                                                   <widget class="QLineEdit" name="total_calories"/>
+                                               </item>
+                                           </layout>
+                                       </widget>
+                                   </item>
+                                   <item>
+                                       <widget class="QFrame" name="frame_24">
+                                           <property name="frameShape">
+                                               <enum>QFrame::StyledPanel</enum>
+                                           </property>
+                                           <property name="frameShadow">
+                                               <enum>QFrame::Raised</enum>
+                                           </property>
+                                           <layout class="QVBoxLayout" name="verticalLayout_14">
+                                               <item>
+                                                   <widget class="QLabel" name="label_21">
+                                                       <property name="text">
+                                                           <string>Заметка:</string>
+                                                       </property>
+                                                   </widget>
+                                               </item>
+                                               <item>
+                                                   <widget class="QTextEdit" name="text_notes"/>
+                                               </item>
+                                           </layout>
+                                       </widget>
+                                   </item>
+                                   <item>
+                                       <widget class="QPushButton" name="button_add_breakfast">
+                                           <property name="text">
+                                               <string>Добавить</string>
+                                           </property>
+                                       </widget>
+                                   </item>
+                               </layout>
+                           </widget>
+                       </item>
+                   </layout>
+               </widget>
+               <widget class="QWidget" name="page_history">
+                   <layout class="QVBoxLayout" name="verticalLayout_11">
+                       <item>
+                           <widget class="QFrame" name="frame_16">
+                               <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QHBoxLayout" name="horizontalLayout_24">
+                                   <item>
+                                       <widget class="QLabel" name="label_17">
+                                           <property name="text">
+                                               <string>История</string>
+                                           </property>
+                                       </widget>
+                                   </item>
+                               </layout>
+                           </widget>
+                       </item>
+                       <item>
+                           <widget class="QFrame" name="frame_17">
+                               <property name="frameShape">
+                                   <enum>QFrame::StyledPanel</enum>
+                               </property>
+                               <property name="frameShadow">
+                                   <enum>QFrame::Raised</enum>
+                               </property>
+                               <layout class="QGridLayout" name="gridLayout_4">
+                                   <item row="0" column="0">
+                                       <widget class="QTableView" name="table_history"/>
+                                   </item>
+                               </layout>
+                           </widget>
+                       </item>
+                       <item>
+                           <widget class="QPushButton" name="pushButton_ubdate_history">
+                               <property name="text">
+                                   <string>Обновить</string>
+                               </property>
+                           </widget>
+                       </item>
+                       <item>
+                           <widget class="QPushButton" name="pushButton_delete">
+                               <property name="text">
+                                   <string>Удалить</string>
+                               </property>
                </widget>
               </item>
              </layout>
