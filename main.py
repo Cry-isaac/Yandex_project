@@ -85,9 +85,6 @@ class MainWindow(QMainWindow):
         # Кнопка удаления строки из бд истории
         self.pushButton_delete.clicked.connect(self.delete_record_by_id)
 
-        # Загружаем тему при старте
-        self.load_theme()
-
         self.update_bd()
 
     def update_bd(self):
@@ -347,23 +344,6 @@ class MainWindow(QMainWindow):
         print("change_max_calories")
         self.max_calories = self.count_max_calories.value()
         print("max_calories: ", self.max_calories)
-
-    def load_theme(self):
-        # Читает тему из файла theme.txt, если файла нет — ставит светлую
-        try:
-            if self.theme_file.exists():
-                with open(self.theme_file, "r", encoding="utf-8") as f:
-                    line = f.readline().strip()
-                    is_dark = line.lower() == "dark"
-            else:
-                is_dark = False  # Дефолт — светлая тема
-
-            self.theme_checkbox.setChecked(is_dark)
-            self._apply_theme(is_dark)
-
-        except Exception as e:
-            print(f"Ошибка при загрузке темы: {e}")
-            self._apply_theme(False)
 
     # Обработка ошибок
     def exception_hook(exctype, value, tb):
