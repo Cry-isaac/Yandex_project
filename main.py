@@ -6,8 +6,8 @@ from PyQt6 import uic  # Импортируем uic
 from PyQt6.QtGui import QPalette, QColor, QPixmap
 from PyQt6.QtSql import QSqlDatabase, QSqlTableModel, QSqlQuery
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QCheckBox, QVBoxLayout, \
-    QHeaderView, QMessageBox, QLineEdit, QInputDialog, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout
-from PyQt6.QtCore import QDate, QSettings, Qt  # Текущая дата
+    QHeaderView, QMessageBox, QLineEdit, QInputDialog, QLabel, QHBoxLayout
+from PyQt6.QtCore import QDate, Qt  # Текущая дата
 
 # Список Ui виджетов
 shadow_elements = {
