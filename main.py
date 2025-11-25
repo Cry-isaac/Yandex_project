@@ -3,7 +3,7 @@ import traceback
 from pathlib import Path
 
 from PyQt6 import uic  # Импортируем uic
-from PyQt6.QtGui import QPalette, QColor
+from PyQt6.QtGui import QPalette, QColor, QPixmap
 from PyQt6.QtSql import QSqlDatabase, QSqlTableModel, QSqlQuery
 from PyQt6.QtWidgets import QApplication, QMainWindow, QPushButton, QWidget, QCheckBox, QVBoxLayout, \
     QHeaderView, QMessageBox, QLineEdit, QInputDialog, QLabel, QSpacerItem, QSizePolicy, QHBoxLayout
@@ -66,7 +66,13 @@ class MainWindow(QMainWindow):
 
         # Страница главная
         # Подключение кнопки на главной странице для добавления еды
-        self.add_food_2.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(1))
+        self.add_food_2.clicked.connect(lambda: self.main_stackedWidget.setCurrentIndex(3))
+
+        # Картинка на главном экране
+        pixmap = QPixmap("image.jpg")
+        self.pixmap.setPixmap(pixmap)
+        self.pixmap.setScaledContents(True)
+        self.pixmap.setMaximumHeight(200)
 
 
         # Страница добавления приёма пищи
